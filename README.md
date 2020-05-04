@@ -128,12 +128,21 @@ TransactionSchema = {
     type: Schema.Types.ObjectId,
     ref: "Medici_Journal"
   },
-  timestamp: Date,
+  timestamp: {
+    type: Date,
+    default: Date.now
+  },
   voided: {
     type: Boolean,
     default: false
   },
-  void_reason: String
+  void_reason: String,
+  // The journal that this is voiding, if any
+  _original_journal: Schema.Types.ObjectId,
+  approved: {
+    type: Boolean,
+    default: true
+  }
 };
 ```
 
